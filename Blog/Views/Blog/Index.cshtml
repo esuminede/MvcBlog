@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MvcBlog.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Bloglar";
+}
+
+<h2 class="mb-4 text-center">Tüm Blog Yazıları</h2>
+
+<div class="container mb-4">
+    @using (Html.BeginForm("Index", "Blog", FormMethod.Get))
+    {
+        <div class="input-group">
+            @Html.TextBox("search", ViewBag.Search as string, new { @class = "form-control", placeholder = "Blog başlığı ara..." })
+            <button type="submit" class="btn btn-outline-primary">Ara</button>
+        </div>
+    }
+</div>
+
+<div class="container">
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <div class="col-12">
+                <p class="text-center text-muted">Hiç sonuç bulunamadı.</p>
+            </div>
+        }
+
+        @foreach (var blog in Model)
+        {
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="@blog.ImagePath" class="card-img-top" alt="Blog Resmi" style="height: 200px; object-fit: cover;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@blog.Title</h5>
+                        <p class="card-text text-truncate" style="max-height: 60px;">@blog.Content</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="@Url.Action("Details", "Blog", new { id = blog.Id })" class="btn btn-sm btn-primary me-2">Detaylar</a>
+                        <a href="@Url.Action("Edit", "Blog", new { id = blog.Id })" class="btn btn-sm btn-warning me-2">Düzenle</a>
+                        <a href="@Url.Action("Delete", "Blog", new { id = blog.Id })" class="btn btn-sm btn-danger">Sil</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

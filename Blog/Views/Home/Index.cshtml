@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var search = Request.QueryString["search"];
+
+}
+
+<div class="welcome-container">
+    <div class="welcome-overlay">
+        <div class="welcome-title">Bloğumuza Hoş Geldiniz</div>
+        <div class="welcome-subtitle">Güncel yazılar, fikirler ve içeriklerle dolu bir dünyaya adım atın.</div>
+    </div>
+</div>
+
+<style>
+    .welcome-container {
+        position: relative;
+        background-image: url('/Images/welcome-bg.jpg'); /* Arka plan resmini buraya koy */
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .welcome-overlay {
+        background-color: rgba(0, 0, 0, 0.5); /* koyu yarı şeffaf filtre */
+        padding: 50px;
+        border-radius: 10px;
+    }
+
+    .welcome-title {
+        font-size: 48px;
+        font-weight: bold;
+    }
+
+    .welcome-subtitle {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+</style>
+
