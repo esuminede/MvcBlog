@@ -8,6 +8,7 @@
 
 @using (Html.BeginForm("Create", "Blog", FormMethod.Post, new { enctype = "multipart/form-data", @class = "row g-3" }))
 {
+    @Html.AntiForgeryToken()
     <div class="col-md-6">
         <label class="form-label">Başlık</label>
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })

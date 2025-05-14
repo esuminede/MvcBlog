@@ -42,7 +42,7 @@ namespace MvcBlog.Controllers
                     var fileName = Path.GetFileName(imageFile.FileName);
                     var path = Path.Combine(Server.MapPath("~/Images"), fileName);
                     imageFile.SaveAs(path);
-                    post.ImagePath = "/Uploads/" + fileName;
+                    post.ImagePath = "/Images/" + fileName;
                 }
 
 
